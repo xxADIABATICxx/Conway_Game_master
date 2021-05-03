@@ -1,7 +1,3 @@
-Executable download: https://github.com/izanbf1803/Builds/tree/master/Conway-game-of-life
-
-<img src="https://i.imgur.com/JFX9qQE.png">
-
 Console arguments: (use '.' to use default value)
 --
 
