@@ -20,7 +20,7 @@ int main(int argc, char** argv)		// Inizialize all values
 	if (argc < 3 || (argv[1][0] == '.' && argv[2][0] == '.'))
 		SDL_SetWindowFullscreen(win, SDL_WINDOW_FULLSCREEN_DESKTOP);
 
-	unsigned char quit = 0, pause = 0, mouseDownLeft = 0, mouseDownRight = 0;
+	unsigned char quit = 0, pause = 0, mouseDownLeft = 0, mouseDownRight = 0, gen_count = 0;
 	while (!quit) {
 		while (SDL_PollEvent(&ev)) {
 			switch (ev.type) {
@@ -71,7 +71,13 @@ int main(int argc, char** argv)		// Inizialize all values
 		}
 		SDL_RenderClear(renderer);
 		SDL_SetRenderDrawColor(renderer, 255, 255, 255, 1);		// Set color = white
-		if (!pause) update(screen);
+		if (!pause && gen_count <= screen->gen_max) {
+			update(screen);
+			gen_count++;
+		}
+		else {
+			SDL_Delay(1);
+		}
 		draw(screen, renderer);
 		SDL_SetRenderDrawColor(renderer, 0, 0, 0, 1);			// Reset color to black
 		SDL_RenderPresent(renderer);
