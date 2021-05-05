@@ -54,6 +54,7 @@ screen_t* init_game(int argc, char** argv)
 	if (argc >= 7 && argv[6][0] != '.') screen->gen_max = atoi(argv[6]);
 
 	if (screen->point_size < 1) screen->point_size = 1;
+	if (screen->gen_max < 1) screen->point_size = 100;
 
 	screen->W /= screen->point_size;
 	screen->H /= screen->point_size;
