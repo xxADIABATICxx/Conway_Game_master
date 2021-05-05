@@ -12,7 +12,7 @@ int main(int argc, char** argv)		// Inizialize all values
 
 	screen_t* screen = init_game(argc, argv);
 
-	SDL_Window* win = SDL_CreateWindow(TITLE, (screen->info.w >> 1)-(screen->W >> 1), (screen->info.h >> 1)-(screen->H >> 1),
+	SDL_Window* win = SDL_CreateWindow(TITLE, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
 										screen->W * screen->point_size, screen->H * screen->point_size, SDL_WINDOW_SHOWN);
 	SDL_Renderer* renderer = SDL_CreateRenderer(win, -1, SDL_RENDERER_ACCELERATED);
 	SDL_Event event;
