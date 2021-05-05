@@ -9,6 +9,7 @@
 #define DEF_H screen->info.h;
 #define DEF_DELAY 10
 #define DEF_SPAWN_PROBABILITY 10
+#define DEF_GEN_MAX 100
 
 // seed for srand
 unsigned int g_seed;
@@ -43,12 +44,14 @@ screen_t* init_game(int argc, char** argv)
 	screen->H			= DEF_H;
 	screen->delay		= DEF_DELAY;
 	screen->sp			= DEF_SPAWN_PROBABILITY;
+	screen->gen_max     = DEF_GEN_MAX; 
 
 	if (argc >= 2 && argv[1][0] != '.') screen->W = atoi(argv[1]);
 	if (argc >= 3 && argv[2][0] != '.') screen->H = atoi(argv[2]);
 	if (argc >= 4 && argv[3][0] != '.') screen->delay = atoi(argv[3]);
 	if (argc >= 5 && argv[4][0] != '.') screen->sp = atoi(argv[4]);
 	if (argc >= 6 && argv[5][0] != '.') screen->point_size = 2*atoi(argv[5]);
+	if (argc >= 7 && argv[6][0] != '.') screen->gen_max = atoi(argv[6]);
 
 	if (screen->point_size < 1) screen->point_size = 1;
 

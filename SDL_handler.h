@@ -8,6 +8,7 @@ typedef struct {
 	unsigned char** pixels_next;	// A copy of pixels for update() blocks
 	int W, H;						// With, Height
 	SDL_DisplayMode info;			// Screen info: Freq, width, height
+	int gen_max;				// Number of generations
 	int delay;						// SDL Delay
 	int sp;							// Block spawn probability (x / 100) 
 	int point_size;					// Cell size in pixels
