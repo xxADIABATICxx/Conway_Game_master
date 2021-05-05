@@ -81,6 +81,9 @@ int main(int argc, char** argv)		// Inizialize all values
 		draw(screen, renderer);
 		SDL_SetRenderDrawColor(renderer, 0, 0, 0, 1);			// Reset color to black
 		SDL_RenderPresent(renderer);
+		if(screen->sp == 0){
+			pause;
+		}
 		if (pause) {
 			SDL_Delay(1);
 		}
