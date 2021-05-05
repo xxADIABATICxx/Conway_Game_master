@@ -15,20 +15,20 @@ int main(int argc, char** argv)		// Inizialize all values
 	SDL_Window* win = SDL_CreateWindow(TITLE, (screen->info.w >> 1)-(screen->W >> 1), (screen->info.h >> 1)-(screen->H >> 1),
 										screen->W * screen->point_size, screen->H * screen->point_size, SDL_WINDOW_SHOWN);
 	SDL_Renderer* renderer = SDL_CreateRenderer(win, -1, SDL_RENDERER_ACCELERATED);
-	SDL_Event ev;
+	SDL_Event event;
 
 	if (argc < 3 || (argv[1][0] == '.' && argv[2][0] == '.'))
 		SDL_SetWindowFullscreen(win, SDL_WINDOW_FULLSCREEN_DESKTOP);
 
 	unsigned char quit = 0, pause = 0, mouseDownLeft = 0, mouseDownRight = 0, gen_count = 0;
 	while (!quit) {
-		while (SDL_PollEvent(&ev)) {
-			switch (ev.type) {
+		while (SDL_PollEvent(&event)) {
+			switch (event.type) {
 				case SDL_QUIT:
 					quit = 1;
 					break;
 				case SDL_KEYDOWN:
-					switch (ev.key.keysym.sym) {
+					switch (event.key.keysym.sym) {
 						case SDLK_ESCAPE:
 						case SDLK_q:
 							quit = 1;
@@ -47,16 +47,16 @@ int main(int argc, char** argv)		// Inizialize all values
 					}
 					break;						
 				case SDL_MOUSEBUTTONDOWN:
-					if (ev.button.button == SDL_BUTTON_LEFT) mouseDownLeft = 1;
-					if (ev.button.button == SDL_BUTTON_RIGHT) mouseDownRight = 1;
+					if (event.button.button == SDL_BUTTON_LEFT) mouseDownLeft = 1;
+					if (event.button.button == SDL_BUTTON_RIGHT) mouseDownRight = 1;
 					break;
 				case SDL_MOUSEBUTTONUP:
-					if (ev.button.button == SDL_BUTTON_LEFT) mouseDownLeft = 0;
-					if (ev.button.button == SDL_BUTTON_RIGHT) mouseDownRight = 0;
+					if (event.button.button == SDL_BUTTON_LEFT) mouseDownLeft = 0;
+					if (event.button.button == SDL_BUTTON_RIGHT) mouseDownRight = 0;
 					break;
 				case SDL_MOUSEMOTION: {
-					int x_ = ev.button.x / screen->point_size;
-					int y_ = ev.button.y / screen->point_size;
+					int x_ = event.button.x / screen->point_size;
+					int y_ = event.button.y / screen->point_size;
 					if (x_ < screen->W && y_ < screen->H) {
 						if (mouseDownLeft) {
 							screen->pixels[x_][y_] = 1;
