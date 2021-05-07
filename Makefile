@@ -1,2 +1,2 @@
-all:
-	gcc -o main game_logic.c SDL_handler.c main.c -IC:\MinGW\include -LC:\MinGW\lib -w -Wl,-subsystem,windows -lmingw32 -lSDL2main -lSDL2
+main: main.c game_logic.c
+	gcc -o main main.c game_logic.c sdl_handler.c interface.c -lSDL2 -lSDL2main

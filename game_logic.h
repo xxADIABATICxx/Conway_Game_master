@@ -1,14 +1,20 @@
-#ifndef GAME_LOGIC_H
-#define GAME_LOGIC_H
+#ifndef GAME_LOGIC_GUARD_H
+#define GAME_LOGIC_GUARD_H
 
+int **init_map(int width, int height);
 
-#include <SDL2/SDL.h>
-#include "SDL_handler.h"
+int **init_rand_map(int width, int height);
 
-// Update the graphic grid board
-void update(screen_t* screen);
+int save_map(int **map, int width, int height);
 
-// Draw the SDL window and redenr the screen
-void draw(screen_t* screen, SDL_Renderer* renderer);
+int **load_map(int *width, int *height);
+
+int count_cell(int **map, int width, int height, int x, int y);
+
+int **update_map(int **map, int width, int height);
+
+void print_map(int **map, int width, int height);
+
+void free_map(int **map, int height);
 
 #endif
